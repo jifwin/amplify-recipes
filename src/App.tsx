@@ -13,14 +13,14 @@ function App() {
     });
   }, []);
 
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
+  function createRecipe() {
+    client.models.Recipes.create({ content: window.prompt("Recipe X") });
   }
 
   return (
     <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
+      <h1>My recipes</h1>
+      <button onClick={createRecipe}>+ new</button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>{todo.content}</li>

@@ -13,13 +13,6 @@ const schema = a.schema({
             content: a.string(),
         })
         .authorization((allow) => [allow.publicApiKey()]),
-    sayHello: a.query()
-        .arguments({
-            name: a.string(),
-        })
-        .returns(a.string())
-        .authorization((allow) => [allow.guest()])
-        .handler(a.handler.function(sayHello)),
 });
 
 export type Schema = ClientSchema<typeof schema>;

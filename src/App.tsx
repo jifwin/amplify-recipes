@@ -4,10 +4,6 @@ import { generateClient } from "aws-amplify/data";
 
 const client = generateClient<Schema>();
 
-client.queries.sayHello({
-    name: "Amplify",
-})
-
 function App() {
   const [recipes, Recipes] = useState<Array<Schema["Recipes"]["type"]>>([]);
 

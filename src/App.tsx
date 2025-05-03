@@ -5,11 +5,11 @@ import { generateClient } from "aws-amplify/data";
 const client = generateClient<Schema>();
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [recipes, Recipes] = useState<Array<Schema["Recipes"]["type"]>>([]);
 
   useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
+    client.models.Recipes.observeQuery().subscribe({
+      next: (data) => Recipes([...data.items]),
     });
   }, []);
 
@@ -22,8 +22,8 @@ function App() {
       <h1>My recipes</h1>
       <button onClick={createRecipe}>+ new</button>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
+        {recipes.map((recipe) => (
+          <li key={recipe.id}>{recipe.content}</li>
         ))}
       </ul>
       <div>

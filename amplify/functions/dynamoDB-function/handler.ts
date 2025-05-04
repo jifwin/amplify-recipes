@@ -17,13 +17,12 @@ export const handler: DynamoDBStreamHandler = async (event) => {
             // business logic to process new records
             // logger.info(`New Image: ${JSON.stringify(record.dynamodb?.NewImage)}`);
 
-            const item = {
-                test: "test"
-            };
-
             const command = new PutItemCommand({
-                TableName: "MyDynamoDBTable",
-                Item: item,
+                TableName: "Processed",
+                Item: {
+                    id: { S: crypto.randomUUID() },
+                    content: { S: "test"}
+                },
             });
 
             try {
